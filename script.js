@@ -86,7 +86,7 @@ scrollToEach.forEach(el => {
   el.addEventListener('click', function (e) {
     e.preventDefault();
     let id = el.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(`${id}`).scrollIntoView({ behavior: 'smooth' });
   });
 });
 
@@ -193,3 +193,25 @@ document
       sld.style.transform = `translateX(${100 * (i - mark)}%)`;
     });
   });
+
+//// for media querry menu bar/////////////////////////////////////////
+
+const menuOpen = document.querySelector('.menu-bar');
+const menuClose = document.querySelector('.menu-bar-hide');
+const menuBar = document.querySelector('.nav__links');
+
+menuOpen.addEventListener('click', function (e) {
+  e.stopPropagation();
+  menuBar.classList.add('menu-bar-position');
+});
+
+menuClose.addEventListener('click', function (e) {
+  e.stopPropagation();
+  menuBar.classList.remove('menu-bar-position');
+});
+
+document.addEventListener('click', function (e) {
+  if (!menuBar.contains(e.target) && !modal.contains(e.target)) {
+    menuBar.classList.remove('menu-bar-position');
+  }
+});

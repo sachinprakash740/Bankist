@@ -1,24 +1,26 @@
 /* The page is NOT responsive. You can implement responsiveness yourself if you wanna have some fun 😃 */
 
 :root {
-  --color-primary: #5ec576;
-  --color-secondary: #ffcb03;
-  --color-tertiary: #ff585f;
-  --color-primary-darker: #4bbb7d;
-  --color-secondary-darker: #ffbb00;
-  --color-tertiary-darker: #fd424b;
-  --color-primary-opacity: #5ec5763a;
-  --color-secondary-opacity: #ffcd0331;
-  --color-tertiary-opacity: #ff58602d;
-  --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
-  --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+  --color-primary: #22c55e; /* modern green */
+  --color-secondary: #facc15; /* soft yellow */
+  --color-tertiary: #ef4444; /* clean red */
+
+  --color-primary-darker: #16a34a;
+  --color-secondary-darker: #eab308;
+  --color-tertiary-darker: #dc2626;
+
+  --color-primary-opacity: rgba(34, 197, 94, 0.15);
+  --color-secondary-opacity: rgba(250, 204, 21, 0.18);
+  --color-tertiary-opacity: rgba(239, 68, 68, 0.15);
+
+  --gradient-primary: linear-gradient(135deg, #22c55e, #86efac);
+  --gradient-secondary: linear-gradient(135deg, #facc15, #fde047);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  
 }
 
 html {
@@ -27,11 +29,11 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  color: #444;
-  line-height: 1.9;
-  background-color: #f3f3f3;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #1f2937;
+  line-height: 1.75;
+  background-color: #f9fafb;
 }
 
 /* GENERAL ELEMENTS */
@@ -98,7 +100,7 @@ body {
 }
 
 p {
-  color: #666;
+  color: #4b5563;
 }
 
 /* This is BAD for accessibility! Don't do in the real world! */
@@ -229,6 +231,20 @@ h4 {
   background-image: var(--gradient-primary);
 }
 
+/* /////menu bar//////////////////// */
+
+.menu-bar {
+  font-size: 28px;
+  color: #111827;
+  display: none;
+}
+
+.menu-bar-hide {
+  font-size: 25px;
+  color: #111827;
+  display: none;
+}
+
 /* FEATURES */
 .features {
   display: grid;
@@ -274,8 +290,9 @@ h4 {
 .operations {
   max-width: 100rem;
   margin: 12rem auto 0 auto;
-
-  background-color: #fff;
+  background-color: #ffffff;
+  border-radius: 1.6rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 }
 
 .operations__tab-container {
@@ -526,9 +543,9 @@ h4 {
 
 /* SIGNUP */
 .section--sign-up {
-  background-color: #37383d;
+  background: linear-gradient(135deg, #111827, #1f2937);
   border-top: none;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #374151;
   text-align: center;
   padding: 10rem 3rem;
 }
@@ -594,11 +611,12 @@ h4 {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 60rem;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   padding: 5rem 6rem;
-  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  border-radius: 1.6rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   z-index: 1000;
-  transition: all 0.5s;
+  transition: all 0.4s ease;
 }
 
 .overlay {
@@ -672,4 +690,55 @@ h4 {
   color: #bbb;
   font-size: 1.5rem;
   font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+  .nav__links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    position: fixed;
+    flex-direction: column;
+    right: -999px;
+    top: 0;
+    width: 400px;
+    background-color: #a1b4ce;
+    height: 100vh;
+    padding: 100px 0px;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 30px;
+    transition: 0.3s ease;
+    z-index: 999;
+  }
+
+  .menu-bar-position {
+    right: 0;
+  }
+
+  .menu-bar {
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 30px;
+  }
+
+  .menu-bar-hide {
+    display: block;
+    position: absolute;
+    left: 4rem;
+    top: 50px;
+  }
+
+  .header {
+    padding: 3rem 3rem;
+    height: 50vh;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 0 3rem;
+  }
 }
